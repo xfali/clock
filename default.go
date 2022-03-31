@@ -54,6 +54,14 @@ func (c *defaultClock) UnixNano() int64 {
 	return atomic.LoadInt64(&c.now)
 }
 
+func (c *defaultClock) Since(t time.Time) time.Duration {
+	return c.Now().Sub(t)
+}
+
+func (c *defaultClock) Until(t time.Time) time.Duration {
+	return t.Sub(c.Now())
+}
+
 func (c *defaultClock) Sync() {
 	atomic.StoreInt64(&c.now, time.Now().UnixNano())
 }

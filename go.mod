@@ -1,1 +1,1 @@
-module "clock"
+module "github.com/xfali/clock"
